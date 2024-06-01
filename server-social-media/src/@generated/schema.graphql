@@ -1,0 +1,557 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Category {
+  createdAt: DateTime!
+  id: ID!
+  name: String!
+  rank: Float!
+  updatedAt: DateTime!
+}
+
+type CollectionDto {
+  avatar: String!
+  createdAt: DateTime!
+  id: ID!
+  markets: [String!]!
+  name: String!
+  posts: [Post!]!
+  saved: String!
+  updatedAt: DateTime!
+}
+
+type Comment {
+  author: User!
+  content: String!
+  createdAt: DateTime!
+  id: ID!
+  images: [String!]!
+  likes: [User!]!
+  postId: String!
+  replies: [Comment!]!
+  updatedAt: DateTime!
+  videos: [String!]!
+}
+
+input CreateCategoryDto {
+  createdAt: DateTime! = "2024-05-29T16:09:51.033Z"
+  name: String!
+  rank: Float!
+  updatedAt: DateTime! = "2024-05-29T16:09:51.033Z"
+}
+
+input CreateCollectionDto {
+  avatar: String!
+  createdAt: DateTime! = "2024-05-29T16:09:50.855Z"
+  markets: [String!]! = []
+  name: String!
+  posts: [String!]! = []
+  saved: String!
+  updatedAt: DateTime! = "2024-05-29T16:09:50.855Z"
+}
+
+input CreateCommentDto {
+  content: String! = ""
+  createdAt: DateTime! = "2024-05-29T16:09:51.009Z"
+  images: [String!]! = []
+  likes: [String!]! = []
+  postId: String!
+  replies: [String!]! = []
+  updatedAt: DateTime! = "2024-05-29T16:09:51.009Z"
+  videos: [String!]! = []
+}
+
+input CreateFriendDto {
+  createdAt: DateTime! = "2024-05-29T16:09:51.026Z"
+  friends: [String!]! = []
+  friendsReq: [String!]! = []
+  updatedAt: DateTime! = "2024-05-29T16:09:51.026Z"
+}
+
+input CreateGroupDto {
+  admins: [String!]! = []
+  allFiles: [String!]! = []
+  author: String! = ""
+  avatar: String!
+  coverImage: String!
+  createdAt: DateTime! = "2024-05-29T16:09:50.792Z"
+  description: String! = ""
+  isPrivate: Boolean! = false
+  members: [String!]! = []
+  membersReq: [String!]! = []
+  name: String!
+  updatedAt: DateTime! = "2024-05-29T16:09:50.792Z"
+}
+
+input CreateMarketDto {
+  category: Float!
+  createdAt: DateTime! = "2024-05-29T16:09:51.020Z"
+  description: String!
+  images: [String!]! = []
+  location: String!
+  name: String!
+  price: String!
+  updatedAt: DateTime! = "2024-05-29T16:09:51.020Z"
+  videos: [String!]! = []
+}
+
+input CreateMessageDto {
+  author: String!
+  content: String!
+  createdAt: DateTime! = "2024-05-29T16:09:50.868Z"
+  room: String!
+  typeMessage: String! = "text"
+  updatedAt: DateTime! = "2024-05-29T16:09:50.868Z"
+}
+
+input CreatePostDto {
+  authorsPostShared: [String!]! = []
+  content: String!
+  createdAt: DateTime! = "2024-05-29T16:09:50.780Z"
+  idGroup: String! = ""
+  images: [String!]! = []
+  isGhim: Boolean! = false
+  quantityComments: Float! = 0
+  statusPostToGroup: Boolean! = false
+  topic: ID!
+  updatedAt: DateTime! = "2024-05-29T16:09:50.780Z"
+  usersLiked: [String!]! = []
+  verified: Boolean! = false
+  video: [String!]! = []
+}
+
+input CreateRoomDto {
+  createdAt: DateTime! = "2024-05-29T16:09:51.001Z"
+  members: [String!]!
+  name: String!
+  updatedAt: DateTime! = "2024-05-29T16:09:51.001Z"
+}
+
+input CreateSavedDto {
+  author: String!
+  createdAt: DateTime! = "2024-05-29T16:09:50.804Z"
+  markets: [String!]! = []
+  posts: [String!]! = []
+  updatedAt: DateTime! = "2024-05-29T16:09:50.804Z"
+}
+
+input CreateTopicDto {
+  color: String!
+  createdAt: DateTime! = "2024-05-29T16:09:50.771Z"
+  image: String!
+  name: String!
+  rank: Float! = 0
+  updatedAt: DateTime! = "2024-05-29T16:09:50.771Z"
+}
+
+input CreateUserDto {
+  address: String! = ""
+  avatar: String! = ""
+  company: String! = ""
+  coverImage: String! = ""
+  createdAt: DateTime! = "2024-05-29T16:09:50.525Z"
+  dayOfBirth: String! = ""
+  description: String! = ""
+  email: String!
+  files: [String!]! = []
+  fullname: String!
+  gender: Float! = 1
+  isActive: Float! = 1
+  password: String!
+  phone: String!
+  relationship: Float! = 0
+  role: String! = "user"
+  university: String! = ""
+  updatedAt: DateTime! = "2024-05-29T16:09:50.525Z"
+  username: String!
+  usersBlocked: [String!]! = []
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Friend {
+  author: User!
+  createdAt: DateTime!
+  friends: [User!]!
+  friendsReq: [User!]!
+  id: ID!
+  updatedAt: DateTime!
+}
+
+type Group {
+  admins: [User!]!
+  allFiles: [String!]!
+  author: User!
+  avatar: String!
+  coverImage: String!
+  createdAt: DateTime!
+  description: String!
+  id: ID!
+  isPrivate: Boolean!
+  members: [User!]!
+  membersReq: [User!]!
+  name: String!
+  updatedAt: DateTime!
+}
+
+type IsPostToGroupDto {
+  idGroup: String!
+  status: Boolean!
+  verified: Boolean!
+}
+
+type LoginResponse {
+  access_token: String!
+  expiresIn: String!
+  user: User!
+}
+
+input LoginUserDto {
+  password: String!
+  username: String!
+}
+
+type Market {
+  author: User!
+  category: Float!
+  createdAt: DateTime!
+  description: String!
+  id: String!
+  images: [String!]!
+  location: String!
+  name: String!
+  price: String!
+  updatedAt: DateTime!
+  videos: [String!]!
+}
+
+type Message {
+  author: User!
+  content: String!
+  createdAt: DateTime!
+  id: ID!
+  room: String!
+  typeMessage: String!
+  updatedAt: DateTime!
+}
+
+type Mutation {
+  acceptFriendReq(friendId: String!): ResponseDto!
+  acceptMemberReqJoinGroup(idGroup: String!, idMemberReq: String!): ResponseDto!
+  activeUser(id: String!): ResponseDto!
+  blockUser(idUserBlocked: String!): ResponseDto!
+  create(body: CreateUserDto!): ResponseUserDto!
+  createCategory(body: CreateCategoryDto!): Category!
+  createCollection(body: CreateCollectionDto!): CollectionDto!
+  createComment(body: CreateCommentDto!): Comment!
+  createFriend(body: CreateFriendDto!, idUser: String!): Friend!
+  createGroup(body: CreateGroupDto!): Group!
+  createMessage(body: CreateMessageDto!): Message!
+  createPost(body: CreatePostDto!): Post!
+  createProduct(body: CreateMarketDto!): Market!
+  createRoom(body: CreateRoomDto!): Room!
+  createSaved(body: CreateSavedDto!): Saved!
+  createTopic(body: CreateTopicDto!): Topic!
+  delete(id: String!): ResponseDto!
+  deleteCollection(id: String!): ResponseDto!
+  deleteComment(id: String!, idCmtParent: String!, idPost: String!): ResponseDto!
+  deleteFriend(friendId: String!): ResponseDto!
+  deleteGroup(id: String!): ResponseDto!
+  deleteMarketCollection(id: String!, idMarket: String!): ResponseDto!
+  deleteMarketSaved(idMarket: String!, idSaved: String!): ResponseDto!
+  deleteMessage(id: String!): ResponseDto!
+  deletePost(id: String!): ResponseDto!
+  deletePostCollection(id: String!, idPost: String!): ResponseDto!
+  deletePostSaved(idPost: String!, idSaved: String!): ResponseDto!
+  deleteProduct(id: String!): Market!
+  deleteRoom(id: String!): ResponseDto!
+  deleteTopic(id: String!): ResponseDto!
+  ghimPost(idPost: String!): ResponseDto!
+  inActiveUser(id: String!): ResponseDto!
+  joinGroup(id: String!): ResponseDto!
+  leaveGroup(id: String!): ResponseDto!
+  likePost(idPost: String!, idUser: String!): ResponseDto!
+  login(body: LoginUserDto!): LoginResponse!
+  rejectReqFriend(friendId: String!): ResponseDto!
+  replyComment(body: CreateCommentDto!, idCmtParent: String!): ResponseDto!
+  requestAddFriend(friendId: String!): ResponseDto!
+  sharePost(idPost: String!, idUser: String!): ResponseDto!
+  signup(body: CreateUserDto!): User!
+  unBlockUser(idUserBlocked: String!): ResponseDto!
+  updatFileForUser(files: [String!]!): ResponseDto!
+  update(body: UpdateUserDto!, id: String!): ResponseDto!
+  updateCollection(body: UpdateCollectionDto!, id: String!): ResponseDto!
+  updateComment(body: CreateCommentDto!, id: String!): Comment!
+  updateGroup(body: UpdateGroupDto!, id: String!): ResponseDto!
+  updateMarketCollection(id: String!, idMarket: String!): ResponseDto!
+  updateMarketSaved(idMarket: String!, idSaved: String!): ResponseDto!
+  updateMessage(body: UpdateMessageDto!, id: String!): Message!
+  updatePost(body: UpdatePostDto!, id: String!): ResponseDto!
+  updatePostCollection(id: String!, idPost: String!): ResponseDto!
+  updatePostSaved(idPost: String!, idSaved: String!): ResponseDto!
+  updateProduct(body: CreateMarketDto!, id: String!): Market!
+  updateRoom(body: UpdateRoomDto!, id: String!): ResponseDto!
+  updateTopic(body: UpdateTopicDto!, id: String!): ResponseDto!
+  uploadMultipleFiles(files: [Upload!]!): [ResponseSingleUpload!]!
+  uploadSingleFiles(file: Upload!): ResponseSingleUpload!
+}
+
+type PaginationCollectionDto {
+  data: [CollectionDto!]!
+  page: Float!
+  total: Float!
+}
+
+type PaginationCommentDto {
+  data: [Comment!]!
+  page: Float!
+  total: Float!
+}
+
+type PaginationGroupDto {
+  data: [Group!]!
+  page: Float!
+  total: Float!
+}
+
+type PaginationMarketDto {
+  data: [Market!]!
+  page: Float!
+  total: Float!
+}
+
+type PaginationPostDto {
+  data: [Post!]!
+  page: Float!
+  total: Float!
+}
+
+type PaginationUserDto {
+  data: [User!]!
+  page: Float!
+  total: Float!
+}
+
+input ParamsQueryDto {
+  query: String
+}
+
+type Post {
+  author: User!
+  authorsPostShared: [User!]!
+  content: String!
+  createdAt: DateTime!
+  id: ID!
+  images: [String!]!
+  isGhim: Boolean!
+  isPostToGroup: IsPostToGroupDto!
+  quantityComments: Float!
+  topic: Topic!
+  updatedAt: DateTime!
+  usersLiked: [User!]!
+  videos: [String!]!
+}
+
+type Query {
+  categories: [Category!]!
+  category(name: String!): Category!
+  getAllMessage(room: String!): [Message!]!
+  getAllPost(filter: ParamsQueryDto!, limit: Float!, page: Float!): PaginationPostDto!
+  getAllRoom(idUser: String!): [Room!]!
+  getCollections(idSaved: String!, limit: Float!, page: Float!): PaginationCollectionDto!
+  getComment(id: String!): Comment!
+  getComments(limit: Float!, page: Float!, postId: String!): PaginationCommentDto!
+  getFriends: Friend!
+  getGroupById(id: String!): Group!
+  getGroups(filter: ParamsQueryDto!, limit: Float!, page: Float!): PaginationGroupDto!
+  getInfoUser: ResponseUserDto!
+  getPostByAuthor(idAuthor: String!, limit: Float!, page: Float!): PaginationPostDto!
+  getPostById(id: String!): Post!
+  getPostsByGroup(idGroup: String!, limit: Float!, page: Float!): PaginationPostDto!
+  getProductById(id: String!): Market!
+  getProducts(filter: ParamsQueryDto!, limit: Float!, page: Float!): PaginationMarketDto!
+  getProductsByUser(filter: ParamsQueryDto!, limit: Float!, page: Float!): PaginationMarketDto!
+  getQuantityUser: ResponseQuantityDto!
+  getRoomById(id: String!): Room!
+  getSaved: Saved!
+  getUserById(id: String!): ResponseUserDto!
+  topic(name: String!): Topic!
+  topics: [Topic!]!
+  user(username: String!): ResponseDto!
+  users(query: QueryPagination!): PaginationUserDto!
+}
+
+input QueryPagination {
+  limit: Float! = 10
+  page: Float! = 1
+}
+
+type ResponseDto {
+  message: String!
+  status: Float!
+}
+
+type ResponseQuantityDto {
+  quantity: Float!
+}
+
+type ResponseSingleUpload {
+  url: String!
+}
+
+type ResponseUserDto {
+  address: String!
+  avatar: String!
+  company: String!
+  coverImage: String!
+  createdAt: DateTime!
+  dayOfBirth: String!
+  description: String!
+  email: String!
+  files: [String!]!
+  fullname: String!
+  gender: Float!
+  id: ID!
+  isActive: Float!
+  phone: String!
+  relationship: Float!
+  role: String!
+  university: String!
+  updatedAt: DateTime!
+  username: String!
+  usersBlocked: [User!]!
+}
+
+type Room {
+  author: User!
+  createdAt: DateTime!
+  id: ID!
+  members: [User!]!
+  name: String!
+  updatedAt: DateTime!
+}
+
+type Saved {
+  author: User!
+  createdAt: DateTime!
+  id: ID!
+  markets: [String!]!
+  posts: [Post!]!
+  updatedAt: DateTime!
+}
+
+type Topic {
+  color: String!
+  createdAt: DateTime!
+  id: ID!
+  image: String!
+  name: String!
+  rank: Float!
+  updatedAt: DateTime!
+}
+
+input UpdateCollectionDto {
+  avatar: String!
+  name: String!
+}
+
+input UpdateGroupDto {
+  admins: [String!]
+  allFiles: [String!]
+  author: String
+  avatar: String
+  coverImage: String
+  description: String
+  isPrivate: Boolean
+  members: [String!]
+  membersReq: [String!]
+  name: String
+  updatedAt: DateTime! = "2024-05-29T16:09:50.794Z"
+}
+
+input UpdateMessageDto {
+  content: String!
+  updatedAt: DateTime! = "2024-05-29T16:09:50.869Z"
+}
+
+input UpdatePostDto {
+  authorsPostShared: [String!]
+  content: String
+  createdAt: DateTime
+  idGroup: String
+  images: [String!]
+  isGhim: Boolean
+  quantityComments: Float
+  statusPostToGroup: Boolean
+  topic: String
+  updatedAt: DateTime
+  usersLiked: [String!]
+  verified: Boolean
+  video: [String!]
+}
+
+input UpdateRoomDto {
+  members: [String!]
+  name: String
+  updatedAt: DateTime! = "2024-05-29T16:09:51.002Z"
+}
+
+input UpdateTopicDto {
+  color: String
+  image: String
+  name: String
+  rank: Float
+  updatedAt: DateTime! = "2024-05-29T16:09:50.772Z"
+}
+
+input UpdateUserDto {
+  address: String
+  avatar: String
+  company: String
+  coverImage: String
+  dayOfBirth: String
+  description: String
+  email: String
+  files: [String!]
+  fullname: String
+  gender: Float
+  isActive: Float
+  phone: String
+  relationship: Float
+  role: String
+  university: String
+  updatedAt: DateTime! = "2024-05-29T16:09:50.547Z"
+  username: String
+  usersBlocked: [String!]
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type User {
+  address: String!
+  avatar: String!
+  company: String!
+  coverImage: String!
+  createdAt: DateTime!
+  dayOfBirth: String!
+  description: String!
+  email: String!
+  files: [String!]!
+  fullname: String!
+  gender: Float!
+  id: ID!
+  isActive: Float!
+  password: String!
+  phone: String!
+  relationship: Float!
+  role: String!
+  university: String!
+  updatedAt: DateTime!
+  username: String!
+  usersBlocked: [User!]!
+}
